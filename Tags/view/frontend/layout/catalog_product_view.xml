@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>      
+        <referenceBlock name="product.info.details">
+          <block class="Magento\Catalog\Block\Product\View" name="tagsubmit.tab" as="tagsubmit" template="TungNguyen_Tags::create.phtml" group="detailed_info" >
+             <arguments>
+             	<argument name="sort_order" xsi:type="string">40</argument>
+                <argument translate="true" name="title" xsi:type="string">Tag Submission </argument>
+             </arguments>
+          </block>
+        </referenceBlock>
+        <!-- <referenceContainer name="content">
+            <block class="TungNguyen\Tags\Block\Submission\Index" after="product.info.addtocart" name="tag_index" template="TungNguyen_Tags::tag_index.phtml" />
+        </referenceContainer> -->
+        <referenceContainer name="product.info.main">
+         <container name="product.info.tag" after="product.info.addtocart" label="Product Tags" htmlTag="div" htmlClass="product-info-after-addtocart">
+                <block class="TungNguyen\Tags\Block\Submission\Index" 
+                       name="tag_index" 
+                       template="TungNguyen_Tags::tag_index.phtml" />
+         </container>
+    </referenceContainer>
+    </body>
+</page>

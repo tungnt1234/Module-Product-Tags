@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tag_form.tag_form_data_source</item>
+            <item name="deps" xsi:type="string">tag_form.tag_form_data_source</item>
+            <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
+        </item>
+
+        <item name="label" xsi:type="string" translate="true">Tag Form</item>
+    </argument>
+
+    <settings>
+        <buttons>
+            <button name="back" class="TungNguyen\Tags\Block\Adminhtml\Tag\Edit\BackButton"/>
+            <button name="delete" class="TungNguyen\Tags\Block\Adminhtml\Tag\Edit\DeleteButton"/>
+            <button name="reset" class="TungNguyen\Tags\Block\Adminhtml\Tag\Edit\ResetButton"/>
+            <button name="save" class="TungNguyen\Tags\Block\Adminhtml\Tag\Edit\SaveButton"/>
+        </buttons>
+        <layout>
+            <navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>tag_form.tag_form_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="tag_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="tags/producttags/save"/>
+        </settings>
+        <dataProvider class="TungNguyen\Tags\Model\Tag\DataProvider" name="tag_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>tags_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="tag">
+        <settings>
+            <label translate="true">Tag Information</label>
+        </settings>
+        
+        <field name="tags_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tag</item>
+                </item>
+            </argument>
+        </field>
+        <field name="is_active" sortOrder="80" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Display product details page</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Tag name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tag</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="product_tag">
+        <settings>
+            <label translate="true">Select Product </label>
+        </settings>
+        
+        
+    </fieldset>
+</form> -->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tag_form.tag_form_data_source</item>
+            <item name="deps" xsi:type="string">tag_form.tag_form_data_source</item>
+        </item>
+
+        <item name="label" xsi:type="string" translate="true">Tag Form</item>
+
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">tag_form</item>
+        </item>
+
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">TungNguyen\Tags\Block\Adminhtml\Tag\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">TungNguyen\Tags\Block\Adminhtml\Tag\Edit\DeleteButton</item>
+            <item name="reset" xsi:type="string">TungNguyen\Tags\Block\Adminhtml\Tag\Edit\ResetButton</item>
+            <item name="save" xsi:type="string">TungNguyen\Tags\Block\Adminhtml\Tag\Edit\SaveButton</item>
+        </item>
+    </argument>
+
+    <dataSource name="tag_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">TungNguyen\Tags\Model\Tag\DataProvider</argument>
+            <argument name="name" xsi:type="string">tag_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">tags_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="tags/producttags/save" />
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <fieldset name="tag">
+        <settings>
+            <label translate="true">Tag Information</label>
+        </settings>
+ 
+        <field name="tags_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tag</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="is_active" sortOrder="80" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Display product details page</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Tag name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tag</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

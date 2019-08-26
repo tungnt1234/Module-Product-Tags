@@ -1,0 +1,12 @@
+
+<?php 
+if ($currentProduct = $block->getCurrentProduct()) {
+	$Id_pr = $currentProduct->getId();
+}
+$tags= $block->getTags();
+	foreach ($tags as $tag) {
+		if ( ($tag->getIs_active())==1 && $Id_pr == ( $tag->getProduct_id() ) ) {
+			echo "<a href='#'><span>".$tag->getName()."</span></a><span>,</span>";
+		}
+	}
+?>

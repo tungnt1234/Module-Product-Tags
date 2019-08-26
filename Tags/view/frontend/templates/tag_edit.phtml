@@ -1,0 +1,10 @@
+<div class="container">
+	<form method='POST' action="/magentodemo/tag/submission/save">
+	    <div class="form-group">
+	        <label for="name">Name</label>
+	        <input type="text" class="form-control" id="name" placeholder="Enter tag name" name="name" value="<?php $tag = $block->getTag(); echo $tag->getName(); ?>">
+	        <input type="hidden" name="current-page" value="">
+	    </div>
+	    <button type="submit" class="btn btn-primary" name="editbtn" value="<?php if (isset($tag['tags_id'])) echo $tag->getId();?>">Submit</button>
+	</form>
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+	<form method='POST' action="/magentodemo/tag/submission/save">
+		
+	    <div class="form-group">
+	        <label for="name">Tag</label>
+	        <input type="text" class="form-control" id="name" placeholder="Enter a tags..." name="name" value="">
+	    </div>
+	    <input type="hidden" name="current-page" value="<?= $block->getUrl('*/*/*',['_current'=>true, '_use_rewrite'=>true]); ?>">
+	    <?php if ($currentProduct = $block->getProduct()) : ?>
+	    <input type="hidden" name="product_id" value="<?php echo $currentProduct->getId(); ?>">
+		<?php endif; ?>	
+	    <button type="submit" class="btn btn-primary text-center" name="smbtn" value="">Submit</button>
+	</form>
+</div>
+
+<style>
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>

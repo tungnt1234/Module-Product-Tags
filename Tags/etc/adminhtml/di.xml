@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- <preference for="TungNguyen\Tags\Api\TagRepositoryInterface" type="TungNguyen\Tags\Model\ContactRepository"/> -->
+    <preference for="TungNguyen\Tags\Api\Data\TagInterface" type="TungNguyen\Tags\Model\Tag"/>
+    <preference for="TungNguyen\Tags\Api\Data\TagSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="TagsGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">TungNguyen\Tags\Model\ResourceModel\Tag\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">TagsGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="TagsGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tag_listing_data_source" xsi:type="string">TungNguyen\Tags\Model\ResourceModel\Tag\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="TungNguyen\Tags\Model\ResourceModel\Tag\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tn_product_tags</argument>
+            <argument name="resourceModel" xsi:type="string">TungNguyen\Tags\Model\ResourceModel\Tag\Collection</argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>	
+        <add id="TungNguyen_Tags::catalog" 
+      	title="Product Tags" 
+      	translate="title" 
+      	module="TungNguyen_Tags" 
+      	parent="Magento_Catalog::catalog" 
+      	sortOrder="50" 
+      	action="tags/producttags/index" 
+      	resource="Magento_Backend::catalog"/>
+    </menu>
+</config>

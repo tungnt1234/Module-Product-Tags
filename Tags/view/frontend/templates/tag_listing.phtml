@@ -1,0 +1,23 @@
+<table class="table table-bordered table-striped table-hover table-reponsive scroll">
+    <thead>
+
+	  	<tr>
+		    <th>ID</th>
+		    <th>Tag name</th>
+		    <th></th>
+		    <th></th>
+	    </tr>
+    </thead>
+    <?php
+    $tags = $block->getTags();
+    foreach ($tags as $tag) {
+    	echo "<tr style=\"border: 1px solid #dddddd; text-align: left; padding: 8px;\">";
+    	echo "<td>".$tag->getId()."</td>";
+    	echo "<td>".$tag->getName()."</td>";
+        ?>
+    	<td><a href="<?php echo $block->getBaseUrl(); ?>tag/submission/edit?id=<?php echo $tag->getId()?>">Edit</a></td>
+        <?php
+    	echo "</tr>";
+    }
+    ?>
+</table>
